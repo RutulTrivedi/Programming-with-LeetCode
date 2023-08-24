@@ -1,0 +1,22 @@
+class Solution {
+  public ListNode insertGreatestCommonDivisors(ListNode head) {
+      ListNode save = head;
+      while(save.next != null){
+          ListNode nn = new ListNode(calcGcd(save.val,save.next.val));
+          nn.next = save.next;
+          save.next = nn;
+          save = save.next.next;
+      }
+      return head;
+  }
+  
+  int calcGcd(int n1,int n2){
+      int gcd = 1;
+      for(int i=1;i<=(int)Math.min(n1,n2);i++){
+          if(n1%i==0 && n2%i==0){
+              gcd = i;
+          }
+      }
+      return gcd;
+  }
+}
