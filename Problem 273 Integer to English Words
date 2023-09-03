@@ -1,0 +1,29 @@
+class Solution {
+    static String[] oneTo9 = {"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
+    static String[] tenTo19 = {"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+    static String[] tenTo90 = {"","Ten","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
+
+    public String numberToWords(int num) {
+        if(num == 0) return "Zero";
+        else return findAns(num);
+    }
+
+    String findAns(int num){
+        String ans = "";
+        if(num<10)
+            ans = oneTo9[num];
+        else if(num<20)
+            ans = tenTo19[num%10];
+        else if(num<100)
+            ans = tenTo90[num/10] + " " + findAns(num%10);
+        else if(num<1000)
+            ans = findAns(num/100) + " Hundred " + findAns(num%100);
+        else if(num<1000000)
+            ans = findAns(num/1000) + " Thousand " + findAns(num%1000);
+        else if(num<1000000000)
+            ans = findAns(num/1000000) + " Million " + findAns(num%1000000);
+        else
+            ans = findAns(num/1000000000) + " Billion " + findAns(num%1000000000);
+        return ans.trim();
+    }
+}
