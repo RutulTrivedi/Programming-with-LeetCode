@@ -1,0 +1,9 @@
+class Solution {
+    public int minimumSum(int num) {
+        char[] arr = Integer.toString(num).toCharArray();
+        Arrays.sort(arr);
+        String s = new String(arr);
+        int ans = ((s.charAt(0)-'0')*10+(s.charAt(2)-'0')) + ((s.charAt(1)-'0')*10+(s.charAt(3)-'0'));
+        return ans;
+    }
+}
